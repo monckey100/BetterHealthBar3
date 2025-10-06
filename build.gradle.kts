@@ -1,15 +1,15 @@
 plugins {
     `java-library`
-    kotlin("jvm") version "2.2.0"
-    id("io.github.goooler.shadow") version "8.1.8"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.18" apply false
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    kotlin("jvm") version "2.2.20"
+    id("com.gradleup.shadow") version "9.2.2"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.19" apply false
+    id("xyz.jpenilla.run-paper") version "3.0.1"
     id("org.jetbrains.dokka") version "1.9.20" //TODO set this to 2.0.0 when stable version is released.
 }
 
 val minecraft = "1.21.8"
 val adventure = "4.24.0"
-val platform = "4.4.0"
+val platform = "4.4.1"
 val targetJavaVersion = 21
 
 allprojects {
@@ -67,15 +67,15 @@ val api = project("api").spigot()
 fun getApiDependencyProject(name: String) = project(name).dependency(api)
 
 val dist = getApiDependencyProject("dist").spigot()
-    .dependency("io.lumine:Mythic-Dist:5.9.5")
+    .dependency("io.lumine:Mythic-Dist:5.10.1")
     .dependency("io.github.arcaneplugins:levelledmobs-plugin:4.0.3.1")
     .dependency("me.clip:placeholderapi:2.11.6")
     .dependency("com.alessiodp.parties:parties-bukkit:3.2.16")
-    .dependency("io.github.toxicity188:BetterHud-standard-api:1.13.1")
-    .dependency("io.github.toxicity188:BetterHud-bukkit-api:1.13.1")
-    .dependency("io.github.toxicity188:BetterModel:1.10.2")
-    .dependency("net.citizensnpcs:citizens-main:2.0.39-SNAPSHOT")
-    .dependency("com.github.SkriptLang:Skript:2.12.1")
+    .dependency("io.github.toxicity188:BetterHud-standard-api:1.13.2")
+    .dependency("io.github.toxicity188:BetterHud-bukkit-api:1.13.2")
+    .dependency("io.github.toxicity188:bettermodel:1.13.0")
+    .dependency("net.citizensnpcs:citizens-main:2.0.40-SNAPSHOT")
+    .dependency("com.github.SkriptLang:Skript:2.12.2")
     .dependency("net.objecthunter:exp4j:0.4.8")
     .also {
         it.tasks.processResources {
@@ -161,7 +161,9 @@ tasks {
         downloadPlugins {
             hangar("BetterHud", "1.13.2")
             hangar("PlaceholderAPI", "2.11.6")
-            hangar("Skript", "2.12.1")
+            hangar("Skript", "2.12.2")
+            hangar("Skript", "2.12.2")
+            hangar("ViaVersion", "5.5.0")
         }
     }
     shadowJar {
