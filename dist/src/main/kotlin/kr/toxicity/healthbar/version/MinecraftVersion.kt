@@ -19,6 +19,8 @@ data class MinecraftVersion(
         val current = MinecraftVersion(Bukkit.getBukkitVersion()
             .substringBefore('-'))
 
+        val version1_21_10 = MinecraftVersion(1, 21, 10)
+        val version1_21_9 = MinecraftVersion(1, 21, 9)
         val version1_21_8 = MinecraftVersion(1, 21, 8)
         val version1_21_7 = MinecraftVersion(1, 21, 7)
         val version1_21_6 = MinecraftVersion(1, 21, 6)
@@ -38,6 +40,8 @@ data class MinecraftVersion(
         val version1_19_4 = MinecraftVersion(1, 19, 4)
 
         private val packVersion = mapOf(
+            version1_21_10 to 69,
+            version1_21_9 to 69,
             version1_21_8 to 64,
             version1_21_7 to 64,
             version1_21_6 to 63,

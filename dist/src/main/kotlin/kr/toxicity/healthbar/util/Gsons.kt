@@ -23,7 +23,9 @@ val PACK_MCMETA get() = jsonObjectOf(
     "pack" to jsonObjectOf(
         "pack_format" to MinecraftVersion.current.packVersion(),
         "description" to "BetterHealthBar's resource pack.",
-        "supported_formats" to jsonArrayOf(13, 99)
+        "supported_formats" to jsonArrayOf(13, 99),
+        "min_format" to 13,
+        "max_format" to 99
     )
 )
 val PACK_MCMETA_WITH_OVERLAY get() = PACK_MCMETA.apply {

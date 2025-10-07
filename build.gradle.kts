@@ -17,7 +17,7 @@ allprojects {
     apply(plugin = "kotlin")
     apply(plugin = "org.jetbrains.dokka")
     group = "kr.toxicity.healthbar"
-    version = "3.9.3"
+    version = "3.10.0"
     repositories {
         mavenCentral()
         maven("https://repo.papermc.io/repository/maven-public/")
@@ -114,7 +114,8 @@ val nmsVersions = listOf(
     NmsVersion("v1_21_R2"),
     NmsVersion("v1_21_R3"),
     NmsVersion("v1_21_R4"),
-    NmsVersion("v1_21_R5")
+    NmsVersion("v1_21_R5"),
+    NmsVersion("v1_21_R6")
 )
 
 dependencies {
@@ -159,9 +160,7 @@ tasks {
         version(minecraft)
         pluginJars(fileTree("plugins"))
         downloadPlugins {
-            hangar("BetterHud", "1.13.2")
             hangar("PlaceholderAPI", "2.11.6")
-            hangar("Skript", "2.12.2")
             hangar("Skript", "2.12.2")
             hangar("ViaVersion", "5.5.0")
         }
