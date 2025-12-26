@@ -28,4 +28,5 @@ include(
     "nms:v1_21_R4",
     "nms:v1_21_R5",
     "nms:v1_21_R6",
+    "nms:v1_21_R7",
 )
