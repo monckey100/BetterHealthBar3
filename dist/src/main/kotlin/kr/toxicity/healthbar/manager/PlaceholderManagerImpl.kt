@@ -17,6 +17,7 @@ import org.bukkit.potion.PotionEffectType
 import java.util.function.Function
 import org.bukkit.entity.LivingEntity
 import org.bukkit.persistence.PersistentDataType
+import io.lumine.mythic.bukkit.MythicBukkit
 
 object PlaceholderManagerImpl : PlaceholderManager, BetterHealthBerManager {
 
@@ -67,6 +68,21 @@ object PlaceholderManagerImpl : PlaceholderManager, BetterHealthBerManager {
 
                 // Fallback if nothing found
                 "?"
+            }
+            addPlaceholder("level") { e: HealthBarCreateEvent ->
+                val entity = e.entity.entity()
+                var mlevel = "?";
+                // Try MythicMobs level from PersistentDataContainer
+                if (entity is LivingEntity) {
+                    mlevel = (MythicBukkit.inst().mobManager.getMythicMobInstance(data.entity.entity())?.level ?: "?").toString()
+                }
+                
+                // Fallback: if it's a player, use XP level
+                if (entity is Player && mlevel == "?") {
+                    return@addPlaceholder entity.level.toString()
+                }
+                
+                return@addPlaceholder mlevel;
             }
         }
         PlaceholderContainer.BOOL.run {
