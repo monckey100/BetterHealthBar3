@@ -20,6 +20,8 @@ data class PackOverlay(
     val formats: VersionRange
 ) {
     fun toJson() = jsonObjectOf(
+        "min_format" to formats.min,
+        "max_format" to formats.max,
         "formats" to formats.toJson(),
         "directory" to directory
     )
