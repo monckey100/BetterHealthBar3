@@ -71,18 +71,23 @@ object PlaceholderManagerImpl : PlaceholderManager, BetterHealthBerManager {
             }
             addPlaceholder("level") { e: HealthBarCreateEvent ->
                 val entity = e.entity.entity()
-                var mlevel = "?";
-                // Try MythicMobs level from PersistentDataContainer
+                var mlevel = "?"
+
+                // Try MythicMobs level first
                 if (entity is LivingEntity) {
-                    mlevel = (MythicBukkit.inst().mobManager.getMythicMobInstance(data.entity.entity())?.level ?: "?").toString()
+                    mlevel = MythicBukkit.inst()
+                        .mobManager
+                        .getMythicMobInstance(entity)   // <- no .entity()
+                        ?.level
+                        ?.toString() ?: "?"
                 }
-                
-                // Fallback: if it's a player, use XP level
+
+                // Fallback: player XP level
                 if (entity is Player && mlevel == "?") {
-                    return@addPlaceholder entity.level.toString()
+                    return@addPlaceholder entity.level.toString()   // smart cast in Kotlin
                 }
-                
-                return@addPlaceholder mlevel;
+
+                return@addPlaceholder mlevel
             }
         }
         PlaceholderContainer.BOOL.run {
