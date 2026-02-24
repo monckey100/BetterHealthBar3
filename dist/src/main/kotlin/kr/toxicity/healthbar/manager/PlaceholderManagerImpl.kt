@@ -79,6 +79,7 @@ object PlaceholderManagerImpl : PlaceholderManager, BetterHealthBerManager {
                         .mobManager
                         .getMythicMobInstance(entity)   // <- no .entity()
                         ?.level
+                        ?.toInt()
                         ?.toString() ?: "?"
                 }
 
